@@ -1,4 +1,4 @@
-# slack-express
+# slack-express [![bitHound Overalll Score](https://www.bithound.io/github/smallwins/slack-express/badges/score.svg)](https://www.bithound.io/github/smallwins/slack-express) [![bitHound Dependencies](https://www.bithound.io/github/smallwins/slack-express/badges/dependencies.svg)](https://www.bithound.io/github/smallwins/slack-express/master/dependencies/npm)
 
 **Warning! This is massively alpha and aiming to ship this week at JSCONF. If you found this: good for you! Please don't share widely!!**
 
