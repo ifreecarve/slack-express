@@ -24,7 +24,12 @@ bb.on('mount', parent=> {
   bb.set('views', parent.get('views'))
 })
 
+function validateEnv(req, res, next) {
+  
+}
+
 // middlewares
+bb.use(validateEnv)
 bb.use(logger('dev'))
 bb.use(parser.json())
 bb.use(parser.urlencoded({extended:true}))

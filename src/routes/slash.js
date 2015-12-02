@@ -52,7 +52,6 @@ function parseSlackMessage(msg, callback) {
 // recives a slash command
 export default function slash(req, res, next) {
 
-
   // parse out the payload and middleware for the Slack /command POST
   parseSlackMessage(req.body, (err, data)=> {
 

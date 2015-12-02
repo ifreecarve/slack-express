@@ -36,6 +36,9 @@
     "tape": "^4.2.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.2.19"
+    "aws-sdk": "^2.2.19",
+    "body-parser": "^1.14.1",
+    "express": "^4.13.3",
+    "morgan": "^1.6.1"
   }
 }

@@ -59,6 +59,8 @@ test('can find the fake registration', t=> {
   })
 })
 
+
+
 /*
 test('whomai', t=> {
   let token = process.env.SLACK_TEST_TOKEN
