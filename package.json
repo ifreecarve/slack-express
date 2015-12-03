@@ -7,7 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "./scripts/test"
+    "test": "./scripts/test",
+    "build": "./scripts/build"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
   "dependencies": {
     "aws-sdk": "^2.2.19",
     "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
     "express": "^4.13.3",
     "morgan": "^1.6.1"
   }

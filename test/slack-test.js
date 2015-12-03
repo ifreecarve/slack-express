@@ -28,7 +28,7 @@ test('sanity', t=> {
 test('cannot register with a bad code', t=> {
   t.plan(1)
   install('bad-code-here', (err, response)=> {
-    t.equals(err, 'invalid_code', err)
+    t.equals(err, 'invalid_client_id', err)
     console.log(err, response)
     t.end()
   })

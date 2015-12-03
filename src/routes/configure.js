@@ -25,7 +25,20 @@ bb.on('mount', parent=> {
 })
 
 function validateEnv(req, res, next) {
-  
+  let required = 'NODE_ENV SLACK_CLIENT_ID SLACK_CLIENT_SECRET'.split(' ')
+  let allGood = true
+  for (var i = 0; i < required.length; i++) {
+    if (typeof process.env[required[i]] === 'undefined') {
+      allGood = false
+      break
+    }
+  }
+  if (allGood) {
+    next() 
+  }
+  else {
+    res.status(500).json({err:'missing env vars in slack-express'})
+  }
 }
 
 // middlewares

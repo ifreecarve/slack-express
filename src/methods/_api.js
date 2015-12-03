@@ -3,11 +3,13 @@ import path from 'path'
 import env from 'node-env-file'
 
 // if we're in dev grab env vars from .env
+/*
 let mode = process.env.NODE_ENV
 let isDev = typeof mode === 'undefined' || mode === 'development'
 if (isDev) {
   env(path.join(process.cwd(), '.env'))
 }
+*/
 
 // defaults
 let client_id = process.env.SLACK_CLIENT_ID

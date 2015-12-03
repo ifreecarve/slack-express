@@ -20,7 +20,7 @@ export function slash(...args) {
 
 // starts the server 
 export function start(name='slack-app') {
-  app.listen(port, x=> {
+  return app.listen(port, x=> {
     if (process.env.NODE_ENV === 'development') {
       let msg = chalk.green(`#!/${name}>`)
       let url = chalk.underline.cyan(`http://localhost:${port}`)
