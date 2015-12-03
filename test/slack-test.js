@@ -5,19 +5,6 @@ import save from '../src/adapters/dynamo/save'
 import find from '../src/adapters/dynamo/find'
 import install from '../src/methods/_install'
 
-/* if we're in dev grab env vars from .env
-let mode = process.env.NODE_ENV
-let isDev = typeof mode === 'undefined' || mode === 'development'
-
-if (isDev) {
-  env(path.join(process.cwd(), '.env'))
-  console.log('ENV loading isDev')
-}
-else {
-  console.log('ENV loading ! isDev')
-}
-*/
-
 test('sanity', t=> {
   t.plan(3)
   t.ok(save, 'there is a save')
@@ -25,7 +12,7 @@ test('sanity', t=> {
   t.ok(install, 'there is a install')
   t.end()
 })
-/*
+
 test('cannot register with a bad code', t=> {
   t.plan(1)
   install('bad-code-here', (err, response)=> {
@@ -60,21 +47,3 @@ test('can find the fake registration', t=> {
   })
 })
 
-*/
-
-/*
-test('whomai', t=> {
-  let token = process.env.SLACK_TEST_TOKEN
-  whoami(token, (err, account)=> {
-    if (err) {
-      t.fail(err, err)
-      console.log('token: ', token)
-    }
-    else {
-      t.ok(account, 'got an account for token ' + token)
-      console.log(account)
-    }
-    t.end()
-  })
-})
-*/

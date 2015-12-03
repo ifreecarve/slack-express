@@ -120,6 +120,7 @@ You need to create an app with Slack for a `SLACK_CLIENT_ID` and `SLACK_CLIENT_S
 
 ```
 NODE_ENV=development
+APP_NAME=dasherized-app-name-here
 SLACK_CLIENT_ID=your-slack-client-id-here
 SLACK_CLIENT_SECRET=your-slack-client-secret-here
 AWS_REGION=us-east-1
@@ -128,15 +129,3 @@ SECRET=your-secret-text-here
 ```
 
 Don't forget to add `.env` to your `.gitignore`.
-
-### database setup
-
-- todo dynamo setup here
-- todo redis seetup here
-
-## deploy
-
-- todo aws here
-- todo heroku here
-- todo digital ocean here
-
