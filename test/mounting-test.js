@@ -14,7 +14,7 @@ let isTesting = typeof mode === 'testing'
 
 test('env sanity', t=> {
   let server = slack.start()
-    console.log('isTesting', isTesting, 'isDev', isDev)
+    console.log(process.env.NODE_ENV, 'isTesting', isTesting, 'isDev', isDev)
   if (isTesting) {
     t.ok(true, 'we are in the codeship!')
     t.end()
