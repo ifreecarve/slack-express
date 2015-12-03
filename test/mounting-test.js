@@ -10,11 +10,10 @@ import slack from '../'
 // if we're in dev grab env vars from .env
 let mode = process.env.NODE_ENV
 let isDev = typeof mode === 'undefined' || mode === 'development'
-let isTesting = typeof mode === 'testing'
+let isTesting = mode === 'testing'
 
 test('env sanity', t=> {
   let server = slack.start()
-    console.log(process.env.NODE_ENV, 'isTesting', isTesting, 'isDev', isDev)
   if (isTesting) {
     t.ok(true, 'we are in the codeship!')
     t.end()
