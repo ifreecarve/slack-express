@@ -5,7 +5,7 @@ import save from '../src/adapters/dynamo/save'
 import find from '../src/adapters/dynamo/find'
 import install from '../src/methods/_install'
 
-// if we're in dev grab env vars from .env
+/* if we're in dev grab env vars from .env
 let mode = process.env.NODE_ENV
 let isDev = typeof mode === 'undefined' || mode === 'development'
 
@@ -59,7 +59,7 @@ test('can find the fake registration', t=> {
   })
 })
 
-
+*/
 
 /*
 test('whomai', t=> {
