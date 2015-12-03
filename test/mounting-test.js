@@ -34,8 +34,7 @@ test('env sanity', t=> {
 })
 
 test('loads env', t=> {
-  if (isDev) {
-    env(path.join(process.cwd(), '.env'))
+  function gimme200() {
     let server = slack.start()
     request('http://localhost:3000', (err, res)=> {
       if (err) {
@@ -48,6 +47,13 @@ test('loads env', t=> {
       server.close()
       t.end()
     })
+  }
+  if (isDev) {
+    env(path.join(process.cwd(), '.env'))
+    gimme200()
+  }
+  else if (isTesting) {
+    gimme200()
   }
   else {
     t.ok(true, 'is ok')
