@@ -1,7 +1,8 @@
 #!/bin/sh
 ./scripts/build
 
-for f in ./test/*
+for f in ./test/*-test.js
 do
+  echo $f
   ./scripts/t $f
 done

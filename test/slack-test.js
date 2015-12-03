@@ -16,6 +16,7 @@ if (isDev) {
 else {
   console.log('ENV loading ! isDev')
 }
+*/
 
 test('sanity', t=> {
   t.plan(3)
@@ -24,7 +25,7 @@ test('sanity', t=> {
   t.ok(install, 'there is a install')
   t.end()
 })
-
+/*
 test('cannot register with a bad code', t=> {
   t.plan(1)
   install('bad-code-here', (err, response)=> {

@@ -13,12 +13,12 @@ let isDev = typeof mode === 'undefined' || mode === 'development'
 let isTesting = mode === 'testing'
 
 test('env sanity', t=> {
-  let server = slack.start()
   if (isTesting) {
     t.ok(true, 'we are in the codeship!')
     t.end()
   }
   else {
+    let server = slack.start()
     request('http://localhost:3000', (err, res)=> {
       if (err) {
         t.fail(err, err)
