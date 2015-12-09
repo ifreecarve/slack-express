@@ -6,6 +6,7 @@ import button from '../methods/button'
 import index from '../routes/index'
 import slash from '../routes/slash'
 import install from '../routes/install'
+import fs from 'fs'
 
 let bb = express()
 
@@ -18,10 +19,19 @@ bb.locals.button = button
 bb.set('view engine', 'ejs')
 bb.set('views', path.join(__dirname, '..', 'views'))
 
-// override view settings for parent app
+// override view settings from parent app
 bb.on('mount', parent=> {
-  bb.set('view engine', parent.get('view engine'))
-  bb.set('views', parent.get('views'))
+  if (process && process.env && process.env.APP_NAME) {
+    let parentViewsPath = parent.get('views')
+    let appName = process.env.APP_NAME
+    let overrideView = path.join(parentViewsPath, `${appName}.ejs`)
+    fs.stat(overrideView, function(err, stats) {
+      if (err) { return }
+      if (stats.isFile()) {
+        bb.set('views', parent.get('views'))
+      }
+    })
+  }
 })
 
 function validateEnv(req, res, next) {
@@ -34,7 +44,7 @@ function validateEnv(req, res, next) {
     }
   }
   if (allGood) {
-    next() 
+    next()
   }
   else {
     res.status(500).json({err:'missing env vars in slack-express'})

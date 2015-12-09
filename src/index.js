@@ -8,7 +8,7 @@ let port = process.env.PORT || 3000
 let cmds = {}
 
 // returns the registered slash commands
-export function stack() {
+export function cmds() {
   return cmds
 }
 
@@ -30,7 +30,7 @@ export function start(name='slack-app') {
 }
 
 // app declaritive defn api
-app.stack  = stack
+app.cmds  = cmds
 app.slash  = slash
 app.start  = start
 app.button = button

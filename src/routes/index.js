@@ -1,3 +1,4 @@
 export default function index(req, res) {
-  res.render('install')
+  let templateName = process.env.APP_NAME
+  res.render(templateName)
 }

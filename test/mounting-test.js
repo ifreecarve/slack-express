@@ -3,6 +3,8 @@ import test from 'tape'
 import env from 'node-env-file'
 import request from 'request'
 import slack from '../'
+import express from 'express'
+
 // import save from '../src/adapters/dynamo/save'
 // import find from '../src/adapters/dynamo/find'
 // import install from '../src/methods/_install'
@@ -26,7 +28,7 @@ test('env sanity', t=> {
       else {
         t.equals(res.statusCode, 500, 'env ')
         console.log(res.body)
-      }  
+      }
       server.close()
       t.end()
     })
@@ -43,7 +45,7 @@ test('loads env', t=> {
       else {
         t.equals(res.statusCode, 200, 'env ')
         console.log(res.body)
-      }  
+      }
       server.close()
       t.end()
     })
@@ -60,4 +62,3 @@ test('loads env', t=> {
     t.end()
   }
 })
-
