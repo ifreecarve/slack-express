@@ -1,6 +1,6 @@
 {
   "name": "slack-express",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Quickly implement Slack slash commands as Express middleware.",
   "main": "dist/index",
   "directories": {
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.2.22",
+    "babel-plugin-add-module-exports": "^0.1.1",
     "body-parser": "^1.14.1",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
