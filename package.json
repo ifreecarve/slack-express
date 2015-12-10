@@ -1,6 +1,6 @@
 {
   "name": "slack-express",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "Quickly implement Slack slash commands as Express middleware.",
   "main": "dist/index",
   "directories": {
