@@ -23,8 +23,8 @@ test('should use default view', t=> {
       if(err) {
         t.fail(err, err)
       } else {
-        let actual = '<h1>Install</h1>\n\n\n  <div style=color:green;>\n    \n  </div>\n\n\n\n  <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=undefined">\n  <img alt="Add to Slack" \n    height="40" \n    width="139" \n    src="https://platform.slack-edge.com/img/add_to_slack.png" \n    srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x">\n  </a>'
-        t.equals(res.body.trim(), actual)
+        let actual = '<h1>Install</h1>\n\n\n  <div style=color:green;>\n    \n  </div>\n\n\n<a href="https://slack.com/oauth/authorize?scope=incoming-webhook,commands&client_id=undefined">\n      <img alt="Add to Slack"\n        height="40"\n        width="139"\n        src="https://platform.slack-edge.com/img/add_to_slack.png"\n        srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x">\n    </a>'
+        t.equals(res.body.trim(), actual.trim())
       }
       t.end()
       testServer.close()
