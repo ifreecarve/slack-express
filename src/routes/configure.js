@@ -22,13 +22,15 @@ bb.set('views', path.join(__dirname, '..', 'views'))
 // override view settings from parent app
 bb.on('mount', parent=> {
   let viewEngine = parent.get('view engine') || bb.get('view engine')
+  bb.set('view engine', viewEngine)
   if (process && process.env && process.env.APP_NAME) {
     let parentViewsPath = parent.get('views')
     let appName = process.env.APP_NAME
     let overrideView = path.join(parentViewsPath, `${appName}.${viewEngine}`)
     fs.stat(overrideView, function(err, stats) {
-      if (err) { return }
-      if (stats.isFile()) {
+      if (err) {
+        bb.set('views', path.join(__dirname, '..', 'views'))
+      } else if (stats.isFile()) {
         bb.set('views', parentViewsPath)
       }
     })

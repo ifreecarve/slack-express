@@ -15,6 +15,7 @@ if (isDev) {
 
 test('should override default view', t=> {
   let app = express()
+  app.set('view engine', 'jade')
   app.set('views', path.join(__dirname, './fixtures/win/views'))
   app.use('/', slack)
   let testServer = app.listen('3333', function() {
@@ -22,7 +23,7 @@ test('should override default view', t=> {
       if(err) {
         t.fail(err, err)
       } else {
-        t.equals(res.body.trim(), '<h1>WINNING</h1>')
+        t.equals(res.body.trim(), '<h1>JADE</h1>')
       }
       t.end()
       testServer.close()

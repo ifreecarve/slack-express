@@ -15,14 +15,14 @@ if (isDev) {
 
 test('should override default view', t=> {
   let app = express()
-  app.set('views', path.join(__dirname, './fixtures/win/views'))
+  app.set('views', path.join(__dirname, './fixtures/fail/views'))
   app.use('/', slack)
   let testServer = app.listen('3333', function() {
     request('http://localhost:3333', (err, res)=> {
       if(err) {
         t.fail(err, err)
       } else {
-        t.equals(res.body.trim(), '<h1>WINNING</h1>')
+        t.notEqual(res.body.trim(), '<h1>FAIL</h1>')
       }
       t.end()
       testServer.close()
