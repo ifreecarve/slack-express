@@ -1,4 +1,4 @@
 export default function index(req, res) {
-  let templateName = process.env.APP_NAME
-  res.render(templateName)
+  let template = req.app.get('template')
+  res.render(template)
 }

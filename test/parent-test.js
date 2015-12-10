@@ -15,7 +15,7 @@ if (isDev) {
 
 test('should override default view', t=> {
   let app = express()
-  app.set('views', path.join(__dirname, './fixtures/win/views'))
+  app.set('template', path.join(__dirname, './fixtures/win/views/slack-express.ejs'))
   app.use('/', slack)
   let testServer = app.listen('3333', function() {
     request('http://localhost:3333', (err, res)=> {

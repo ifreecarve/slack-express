@@ -13,7 +13,7 @@ if (isDev) {
   env(path.join(process.cwd(), '.env'))
 }
 
-test('should override default view', t=> {
+test('should fail to override default view when template missing', t=> {
   let app = express()
   app.set('views', path.join(__dirname, './fixtures/fail/views'))
   app.use('/', slack)

@@ -13,10 +13,9 @@ if (isDev) {
   env(path.join(process.cwd(), '.env'))
 }
 
-test('should override default view', t=> {
+test('should override default template engine', t=> {
   let app = express()
-  app.set('view engine', 'jade')
-  app.set('views', path.join(__dirname, './fixtures/win/views'))
+  app.set('template', path.join(__dirname, './fixtures/win/views/slack-express.jade'))
   app.use('/', slack)
   let testServer = app.listen('3333', function() {
     request('http://localhost:3333', (err, res)=> {
