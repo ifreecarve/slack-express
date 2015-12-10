@@ -9,22 +9,13 @@ import path from 'path'
 //
 //   })
 //
-export default function api(url, tokenOrCode, callback) {
+export default function api(url, token, callback) {
   // defaults
-  let client_id = process.env.SLACK_CLIENT_ID
-  let client_secret = process.env.SLACK_CLIENT_SECRET
   let headers = {Accept: 'application/json'}
-
   let json = true
-  let isCode = url === 'https://slack.com/api/oauth.access'
-  let form = {client_id, client_secret}
-  if (isCode) {
-    form.code = tokenOrCode
-  }
-  else {
-    form.token = tokenOrCode
-  }
+  let form = {token}
   let query = {url, headers, form, json}
+
   req.post(query, (err, res)=> {
     if (err) {
       callback(err)

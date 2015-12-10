@@ -1,15 +1,15 @@
 import save from './save'
-import api from './_api'
+import _api from './_api'
+import _token from './_token'
 
 function test(token, callback) {
   let url = 'https://slack.com/api/auth.test'
-  api(url, token, callback)
+  _api(url, token, callback)
 }
 
 // register app to a slack team
 export default function register(code, callback) {
-  let url = 'https://slack.com/api/oauth.access'
-  api(url, code, (err, json)=> {
+  _token(code, (err, json)=> {
     if (err) {
       callback(err)
     }

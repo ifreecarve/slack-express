@@ -5,6 +5,13 @@ import save from '../src/adapters/dynamo/save'
 import find from '../src/adapters/dynamo/find'
 import install from '../src/methods/_install'
 
+// if we're in dev grab env vars from .env
+let mode = process.env.NODE_ENV
+let isDev = typeof mode === 'undefined' || mode === 'development'
+if (isDev) {
+  env(path.join(process.cwd(), '.env'))
+}
+
 test('sanity', t=> {
   t.plan(3)
   t.ok(save, 'there is a save')
@@ -16,7 +23,7 @@ test('sanity', t=> {
 test('cannot register with a bad code', t=> {
   t.plan(1)
   install('bad-code-here', (err, response)=> {
-    t.equals(err, 'invalid_client_id', err)
+    t.equals(err, 'invalid_code', err)
     console.log(err, response)
     t.end()
   })
