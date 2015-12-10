@@ -1,4 +1,4 @@
-import save from './save' 
+import save from './save'
 import api from './_api'
 
 function test(token, callback) {
@@ -19,7 +19,7 @@ export default function register(code, callback) {
 
       test(token, (err, acct)=> {
         if (err) {
-          callback(err)  
+          callback(err)
         }
         else {
           let user_id = acct.user_id
