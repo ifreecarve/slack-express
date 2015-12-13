@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "./scripts/test",
+    "prepublish": "npm run build",
     "build": "./scripts/build"
   },
   "repository": {
