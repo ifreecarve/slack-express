@@ -9,7 +9,7 @@ function parseSlackMessage(msg, callback) {
   let stack = cmds()                                // all the commands
   let sub  = msg.text? msg.text.split(' ')[0] : ''  // sub command (foo from '/bb foo')
   let cmd  = `${msg.command} ${sub}`.trim()         // full command ('/bb foo')
-  let ids  = Object.keys(stack)                      // all the command ids
+  let ids  = Object.keys(stack)                     // all the command ids
   let it   = ids.filter(id=> id.indexOf(cmd) > -1)  // array of matches
   let id   = it.length === 0? ids[0] : it[0]        // THE id or the first one
   // slash command middleware wut
@@ -61,12 +61,19 @@ export default function slash(req, res, next) {
 
     // sends response to the Slack POST
     function message(msg) {
+      // override the response message to appear in channel it was requested from
       msg.channel = payload.message.channel_id
+      // use the reponse_url property to get over 3s window to respond 
       let url     = payload.message.response_url
       let headers = {'Content-Type':'application/json'}
       let body    = JSON.stringify(msg)
       request.post({url, headers, body}, err=> {
-        res.json({text: err? err : '…'})
+        if (err) {
+          res.json({text:err})
+        }
+        else {
+          res.status(200).end()
+        }
       })
     }
 
