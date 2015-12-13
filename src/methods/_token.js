@@ -23,6 +23,7 @@ export default function token(code, callback) {
       callback(res.body.error)
     }
     else {
+        console.log('GOT TOKEN', json)
       let json = res.body
       delete json.ok
       callback(null, json.access_token)

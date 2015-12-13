@@ -13,13 +13,13 @@ slash('/echo', (payload, message)=> {
   // payload recieved as a POST from Slack command issued
   let cmd = payload.raw.command
   // sends a response to the Slack user
-  message({text:`Echo to Slack! ${cmd}`})
+  message({text:`Received command from Slack: ${cmd}`})
 })
 
 start()
 ```
 
-Now any Slack user issuing `/echo` slash command will recieve "Echo to Slack! /echo" message.
+Now any Slack user issuing `/echo` slash command will recieve "Received command from Slack: /echo" message.
 
 #### generated routes
 
@@ -44,7 +44,7 @@ slack.slash('/rad', (payload, message)=> {
 let app = express()
 
 // mount the slash commands on the /rad route
-app.use('/rad', slackApp)
+app.use('/rad', slack)
 
 // add other routes and junk per norms
 app.get('/', (req, res)=> res.end('index page'))
@@ -55,7 +55,7 @@ app.listen(3777)
 
 ### middleware
 
-OH BTW. The `slack.slash` function can accept any number of slash command middlewares. Symmetry with Express aside, the `slack-express` middleware sub stack is a nice pattern for flow control, data transform pipelines and helps guide app modularization. Check it out:
+`slack.slash` accepts any number of slash command middlewares. Symmetry with Express aside, the `slack-express` middleware sub stack is a nice pattern for flow control, data transform pipelines and helps guide app modularization. Check it out:
 
 ```javascript
 import slack from 'slack-express'
@@ -98,17 +98,17 @@ Use it to process the command and respond using [Slack message formatted JSON](h
 
 ### persistence
 
-Slack slash commands are issued by real humans and you may wish to associate information with them; databases are good for that. You can find and store data for each Slack account interacting with your app by using `find` and `save`. 
+Slack slash commands are issued by real humans and you may wish to associate information with them. Databases are good for this! You can find and store data for each Slack account interacting with your app by using `find` and `save`. Currently only DynamoDB is supported but Redis will be an easy drop in. 
 
 ### api
 
 ```
 slack
-  slash .... Register a slash command handler
-  start .... Starts up the app
-  button ... Add to Slack button for your app
-  find ..... Find a saved Slack account
-  save ..... Save a Slack account
+  slash(cmd, (payload, message)=>) ... Register a slash command handler
+  start() ............................ Starts up the app
+  button() ........................... Add to Slack button for your app
+  find(params, (err, account)=>) ..... Find a saved Slack account
+  save(params, (err, account)=>) ..... Save a Slack account
 
 ```
 
