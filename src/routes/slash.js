@@ -63,8 +63,9 @@ export default function slash(req, res, next) {
     function message(msg) {
       msg.channel = payload.message.channel_id
       let url     = payload.message.response_url
+      let headers = {'Content-Type':'application/json'}
       let body    = JSON.stringify(msg)
-      request.post({url, body}, err=> {
+      request.post({url, headers, body}, err=> {
         res.json({text: err? err : '…'})
       })
     }
