@@ -9,12 +9,12 @@ function test(token, callback) {
 
 // register app to a slack team
 export default function register(code, callback) {
-  _token(code, (err, json)=> {
+  _token(code, (err, access_token)=> {
     if (err) {
       callback(err)
     }
     else {
-      let token = json.access_token
+      let token = access_token
       let owner = true
 
       test(token, (err, acct)=> {

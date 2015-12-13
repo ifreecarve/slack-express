@@ -25,7 +25,6 @@ export default function token(code, callback) {
     else {
       let json = res.body
       delete json.ok
-        console.log('GOT TOKEN', json)
       callback(null, json.access_token)
     }
   })
