@@ -13,7 +13,7 @@ function parseSlackMessage(msg, callback) {
   let it   = ids.filter(id=> id.indexOf(cmd) > -1)  // array of matches
   let id   = it.length === 0? ids[0] : it[0]        // THE id or the first one
   // slash command middleware wut
-  let middleware = stack[id].reverse()
+  let middleware = stack[id]
   // cleanup the payload signature: {raw, message, account}
   let payload = {
     ok: true,
