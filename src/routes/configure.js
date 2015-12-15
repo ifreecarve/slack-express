@@ -16,6 +16,7 @@ bb.set('template', 'slack-express')
 bb.locals.ok = true
 bb.locals.msg = ''
 bb.locals.button = button
+bb.locals.scope = 'incoming-webhook,commands'
 
 // default views
 bb.set('view engine', 'ejs')
@@ -42,6 +43,8 @@ function validateEnv(req, res, next) {
   let required = ['NODE_ENV', 'APP_NAME', 'SLACK_CLIENT_ID', 'SLACK_CLIENT_SECRET']
   let bad = required.filter(k=> typeof process.env[k] === 'undefined')
   let err = bad.length? Error(`missing env vars: ${bad.join(', ')}`) : null
+  // force the client_id
+  bb.locals.client_id = process.env.SLACK_CLIENT_ID
   next(err)
 }
 
