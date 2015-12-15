@@ -6,6 +6,7 @@ import button from '../methods/button'
 import index from '../routes/index'
 import slash from '../routes/slash'
 import install from '../routes/install'
+import verify from '../routes/verify'
 import fs from 'fs'
 
 let bb = express()
@@ -52,7 +53,7 @@ bb.use(parser.urlencoded({extended:true}))
 
 // default routes
 bb.get('/', index)
-bb.post('/', slash)
+bb.post('/', verify, slash)
 bb.get('/auth', install)
 
 export default bb
