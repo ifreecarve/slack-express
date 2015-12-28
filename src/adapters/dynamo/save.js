@@ -12,7 +12,7 @@ function save(params, callback) {
     callback(Error('missing user_id'))
   }
   else {
-    let TableName = 'bugbot'
+    let TableName = process.env.DYNAMODB_TABLENAME || 'bugbot'
     let Item = {}
     let query = {TableName, Item}
     Object.keys(params).forEach(k=> {

@@ -19,7 +19,7 @@ export function slash(...args) {
 }
 
 // starts the server 
-export function start(name='slack-app') {
+export function start(name = process.env.APP_NAME || 'slack-app') {
   return app.listen(port, x=> {
     if (process.env.NODE_ENV === 'development') {
       let msg = chalk.green(`#!/${name}>`)
@@ -29,8 +29,8 @@ export function start(name='slack-app') {
   })
 }
 
-// app declaritive defn api
-app.cmds  = cmds
+// app declarative defn api
+app.cmds   = cmds
 app.slash  = slash
 app.start  = start
 app.button = button

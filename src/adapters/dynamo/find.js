@@ -18,7 +18,7 @@ function find(params, callback) {
   else {
     // query for the account in dynamo
     let query = {
-      TableName: 'bugbot',
+      TableName: process.env.DYNAMODB_TABLENAME || 'bugbot',
       Key: {
         user_id:{S:params.user_id}, 
         team_id:{S:params.team_id}

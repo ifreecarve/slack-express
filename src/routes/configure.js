@@ -11,6 +11,7 @@ import fs from 'fs'
 
 let bb = express()
 bb.set('template', 'slack-express')
+bb.disable('x-powered-by')
 
 // default template locals
 bb.locals.ok = true

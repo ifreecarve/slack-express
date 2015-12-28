@@ -74,7 +74,7 @@ export default function init(appname='slack-slash-app', callback) {
 }
 
 if (require.main === module) {
-  init('bugbot', (err, success)=> {
+  init(process.env.DYNAMODB_TABLENAME || 'bugbot', (err, success)=> {
     if (err) {
       console.error(err)
     }
