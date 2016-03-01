@@ -20,7 +20,7 @@ export default function install(req, res, next) {
       else {
         res.render(templateName, {
           ok: true,
-          msg: 'Successfulling installed'
+          msg: 'Successfully installed'
         })
       }
     })
