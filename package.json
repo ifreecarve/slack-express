@@ -39,7 +39,7 @@
     "tape": "^4.2.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.2.22",
+    "aws-sdk": "^2.6.11",
     "babel-plugin-add-module-exports": "^0.1.1",
     "body-parser": "^1.14.1",
     "ejs": "^2.3.4",
